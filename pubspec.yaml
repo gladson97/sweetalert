@@ -1,7 +1,6 @@
 name: sweetalert
 description: sweet alert for flutter.
-version: 0.0.1
-author: JZoom <jzoom8112@gmail.com>
+version: 0.0.2
 homepage: https://github.com/jzoom/sweetalert
 
 environment:
