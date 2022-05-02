@@ -1,12 +1,9 @@
 library sweetalert;
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:sweetalert/src/cancel.dart';
 import 'package:sweetalert/src/confirm.dart';
 import 'package:sweetalert/src/success.dart';
-
 
 /// Return false to keey dialog showing
 typedef bool SweetAlertOnPress(bool isConfirm);
@@ -36,7 +33,6 @@ class SweetAlertOptions {
 
   /// If set to true, two buttons will be displayed.
   final bool showCancelButton;
-
 
   final SweetAlertStyle style;
 
@@ -103,16 +99,12 @@ class SweetAlertDialogState extends State<SweetAlertDialog>
   }
 
   void confirm() {
-    if (_options.onPress != null && _options.onPress(true) == false)
-      return;
+    if (_options.onPress != null && _options.onPress(true) == false) return;
     Navigator.pop(context);
   }
 
-
-
   void cancel() {
-    if (_options.onPress != null && _options.onPress(false) == false)
-      return;
+    if (_options.onPress != null && _options.onPress(false) == false) return;
     Navigator.pop(context);
   }
 
@@ -227,7 +219,8 @@ class SweetAlertDialogState extends State<SweetAlertDialog>
                       color: Colors.white,
                       width: double.infinity,
                       child: new Padding(
-                        padding: new EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+                        padding:
+                            new EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
                         child: new Column(
                           mainAxisSize: MainAxisSize.min,
                           children: listOfChildren,
@@ -269,7 +262,7 @@ abstract class SweetAlert {
       String cancelButtonText,
       String confirmButtonText,
       SweetAlertStyle style}) {
-    SweetAlertOptions options =  new SweetAlertOptions(
+    SweetAlertOptions options = new SweetAlertOptions(
         showCancelButton: showCancelButton,
         title: title,
         subtitle: subtitle,
@@ -279,9 +272,9 @@ abstract class SweetAlert {
         confirmButtonText: confirmButtonText,
         cancelButtonText: cancelButtonText,
         cancelButtonColor: confirmButtonColor);
-    if(_state!=null){
+    if (_state != null) {
       _state.update(options);
-    }else{
+    } else {
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -291,15 +284,11 @@ abstract class SweetAlert {
                 padding: new EdgeInsets.all(40.0),
                 child: new Scaffold(
                   backgroundColor: Colors.transparent,
-                  body: new SweetAlertDialog(
-                      curve: curve,
-                      options:options
-                  ),
+                  body: new SweetAlertDialog(curve: curve, options: options),
                 ),
               ),
             );
           });
     }
-
   }
 }
